@@ -1,0 +1,618 @@
+@import './base.css';
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  font-family: 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Hiragino Sans GB', 'Arial', 'sans-serif' !important;
+}
+
+.el-menu,
+.el-menu-item,
+.el-sub-menu__title,
+.el-menu--popup,
+.layout-root,
+.layout-main,
+.layout-header,
+.layout-footer,
+.layout-tabs,
+.content-card {
+  font-family: 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Hiragino Sans GB', 'Arial', 'sans-serif' !important;
+}
+
+.el-menu--popup {
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1) !important;
+  /* background: #fff !important; */
+  padding: 0px 0 !important;
+  border: none !important;
+}
+
+/* 选中状态：蓝紫色背景和蓝紫色阴影 */
+:deep(.el-menu-item.is-active),
+:deep(.el-sub-menu__title.is-active),
+:deep(.el-menu--popup .el-menu-item.is-active),
+:deep(.el-menu--popup .el-sub-menu__title.is-active) {
+  background: var(--menu-active-bg) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px 0 rgba(80, 69, 220, 0.02);
+  color: #636cff !important;
+}
+
+/* 悬停状态：灰色背景和灰色阴影 */
+:deep(.el-menu-item:hover),
+:deep(.el-menu-item:active),
+:deep(.el-sub-menu__title:hover),
+:deep(.el-sub-menu__title:active),
+:deep(.el-menu--popup .el-menu-item:hover),
+:deep(.el-menu--popup .el-menu-item:active),
+:deep(.el-menu--popup .el-sub-menu__title:hover),
+:deep(.el-menu--popup .el-sub-menu__title:active) {
+  background: #ececec !important;
+  border-radius: 8px !important;
+  box-shadow: var(--menu-shadow);
+  color: #636cff !important;
+}
+
+/* 选中和悬停时icon也变色 */
+:deep(.el-menu-item.is-active .el-icon),
+:deep(.el-sub-menu__title.is-active .el-icon),
+:deep(.el-menu--popup .el-menu-item.is-active .el-icon),
+:deep(.el-menu--popup .el-sub-menu__title.is-active .el-icon),
+:deep(.el-menu-item:hover .el-icon),
+:deep(.el-menu-item:active .el-icon),
+:deep(.el-sub-menu__title:hover .el-icon),
+:deep(.el-sub-menu__title:active .el-icon),
+:deep(.el-menu--popup .el-menu-item:hover .el-icon),
+:deep(.el-menu--popup .el-menu-item:active .el-icon),
+:deep(.el-menu--popup .el-sub-menu__title:hover .el-icon),
+:deep(.el-menu--popup .el-sub-menu__title:active .el-icon) {
+  color: #636cff !important;
+  fill: #636cff !important;
+}
+
+/* 弹出菜单整体圆角和阴影 */
+:deep(.el-menu--popup) {
+  border-radius: 10px !important;
+  box-shadow: 0 4px 24px 0 rgba(60, 62, 80, 0.02);
+  background: #fff !important;
+  padding: 6px 0 !important;
+}
+
+:root {
+  --menu-shadow: box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+  --menu-hover-bg: #ececec;
+  --menu-active-bg: #e0e7ff;
+  /* 更深的蓝紫色 */
+  --menu-active-shadow: 0 2px 8px 0 rgba(80, 90, 220, 0.02);
+  --menu-radius: 8px;
+  --menu-active-color: #636cff;
+}
+
+/* 菜单项悬停（hover/active）样式 */
+.el-menu-item:hover,
+.el-menu-item:active,
+.el-sub-menu__title:hover,
+.el-sub-menu__title:active,
+.el-menu--popup .el-menu-item:hover,
+.el-menu--popup .el-menu-item:active,
+.el-menu--popup .el-sub-menu__title:hover,
+.el-menu--popup .el-sub-menu__title:active {
+  background: var(--menu-hover-bg) !important;
+  border-radius: var(--menu-radius) !important;
+  box-shadow: var(--menu-shadow) !important;
+  color: var(--menu-active-color) !important;
+}
+
+/* 菜单项选中（is-active）样式 */
+.el-menu-item.is-active,
+.el-sub-menu__title.is-active,
+.el-menu--popup .el-menu-item.is-active,
+.el-menu--popup .el-sub-menu__title.is-active {
+  background: var(--menu-active-bg) !important;
+  border-radius: var(--menu-radius) !important;
+  box-shadow: var(--menu-active-shadow) !important;
+  color: var(--menu-active-color) !important;
+}
+
+/* 菜单项 icon 选中/悬停变色 */
+.el-menu-item.is-active .el-icon,
+.el-sub-menu__title.is-active .el-icon,
+.el-menu--popup .el-menu-item.is-active .el-icon,
+.el-menu--popup .el-sub-menu__title.is-active .el-icon,
+.el-menu-item:hover .el-icon,
+.el-menu-item:active .el-icon,
+.el-sub-menu__title:hover .el-icon,
+.el-sub-menu__title:active .el-icon,
+.el-menu--popup .el-menu-item:hover .el-icon,
+.el-menu--popup .el-menu-item:active .el-icon,
+.el-menu--popup .el-sub-menu__title:hover .el-icon,
+.el-menu--popup .el-sub-menu__title:active .el-icon {
+  color: var(--menu-active-color) !important;
+  fill: var(--menu-active-color) !important;
+}
+
+.el-menu-item,
+.el-sub-menu__title,
+.sider-logo span,
+.layout-header,
+.layout-tabs,
+.content-card {
+  font-weight: bold !important;
+}
+
+.el-menu-item,
+.el-sub-menu__title {
+  height: 40px !important;
+  line-height: 40px !important;
+  min-height: 40px !important;
+  display: flex;
+  align-items: center;
+}
+
+.el-menu-item.is-active,
+.el-menu-item.is-active span,
+.el-sub-menu__title.is-active,
+.el-sub-menu__title.is-active span,
+.el-menu--popup .el-menu-item.is-active,
+.el-menu--popup .el-menu-item.is-active span,
+.el-menu--popup .el-sub-menu__title.is-active,
+.el-menu--popup .el-sub-menu__title.is-active span {
+  color: var(--menu-active-color) !important;
+}
+
+.el-menu-item:hover,
+.el-menu-item:hover span,
+.el-sub-menu__title:hover,
+.el-sub-menu__title:hover span,
+.el-menu--popup .el-menu-item:hover,
+.el-menu--popup .el-menu-item:hover span,
+.el-menu--popup .el-sub-menu__title:hover,
+.el-menu--popup .el-sub-menu__title:hover span {
+  color: var(--menu-active-color) !important;
+}
+
+.el-menu--collapse .el-menu-item,
+.el-menu--collapse .el-sub-menu__title {
+  justify-content: center !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* 展开时有 margin，收起时无 margin，icon自然对齐 */
+.el-menu:not(.el-menu--collapse) .el-menu-item,
+.el-menu:not(.el-menu--collapse) .el-sub-menu__title {
+  margin: 4px 8px !important;
+}
+
+.el-menu--collapse .el-menu-item,
+.el-menu--collapse .el-sub-menu__title {
+  margin: 0 !important;
+  justify-content: center !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.layout-sider.collapsed .sider-logo {
+  justify-content: center !important;
+  padding-left: 0 !important;
+}
+
+.layout-sider.collapsed .logo-img {
+  height: 40px !important;
+  margin: 0 auto !important;
+  display: block !important;
+}
+
+.layout-sider:not(.collapsed) .logo-img {
+  height: 40px !important;
+  margin-right: 8px !important;
+  margin-left: 0 !important;
+  display: inline-block !important;
+}
+
+/* 标签栏整体高度和底部分割线 */
+.antpro-tabs {
+  background: transparent;
+  border-bottom: none;
+  min-height: 44px;
+  height: 44px;
+  position: relative;
+}
+
+:deep(.antpro-tabs .el-tabs__header),
+:deep(.antpro-tabs .el-tabs__nav),
+:deep(.antpro-tabs .el-tabs__nav-wrap),
+:deep(.antpro-tabs .el-tabs__nav-scroll) {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  min-height: 44px;
+  height: 44px;
+}
+
+:deep(.antpro-tabs .el-tabs__item) {
+  border-radius: 0 !important;
+  margin-right: 0;
+  padding: 0 22px;
+  height: 41px;
+  line-height: 42px;
+  font-size: 15px;
+  color: #222;
+  background: transparent !important;
+  border: none;
+  border-right: 1px solid #e5e6eb;
+  border-bottom: none !important;
+  transition: color 0.2s;
+  position: relative;
+  box-shadow: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+  z-index: 1;
+}
+
+:deep(.antpro-tabs .el-tabs__item:last-child) {
+  border-right: none !important;
+}
+
+:deep(.antpro-tabs .el-tabs__item.is-active) {
+  background: var(--menu-active-bg) !important;
+  color: #636cff !important;
+  font-weight: 600;
+  z-index: 2;
+  box-shadow: 0 4px 16px 0 rgba(99, 108, 255, 0.08) !important;
+  margin-top: 6px !important;
+}
+
+:deep(.antpro-tabs .el-tabs__item.is-active::after) {
+  display: none !important;
+}
+
+:deep(.antpro-tabs .el-tabs__item:hover) {
+  color: #1677ff !important;
+  background: transparent !important;
+}
+
+:deep(.antpro-tabs .el-tabs__item .el-icon) {
+  font-size: 18px !important;
+  margin-right: 6px !important;
+  color: inherit !important;
+  display: flex;
+  align-items: center;
+}
+
+:deep(.antpro-tabs .el-tabs__item .el-icon + span) {
+  margin-left: 0 !important;
+}
+
+:deep(.antpro-tabs .el-tabs__item.is-top) {
+  border: none !important;
+  border-right: 1px solid #e5e6eb !important;
+  border-bottom: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  background: transparent !important;
+}
+
+.antdpro-header-right .el-button,
+.tabs-extra-ops .el-button {
+  border-radius: 8px !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: #fff !important;
+  padding: 0 16px !important;
+  min-width: 40px;
+  min-height: 36px;
+  height: 36px;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.antdpro-header-right .el-button:hover,
+.tabs-extra-ops .el-button:hover {
+  box-shadow: 0 2px 8px 0 rgba(60, 62, 80, 0.10) !important;
+  background: #f5f7fa !important;
+}
+
+.noborderbtn {
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.noborderbtn:hover {
+  background: #e4e7ed;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+.el-card {
+  --el-card-padding: 0 !important;
+}
+
+/* 覆盖 Element Plus Message 样式，模仿 Ant Design Vue */
+.el-message {
+  height: 40px;
+  font-family: 'Microsoft YaHei', '微软雅黑', sans-serif !important;
+  /* 使用微软黑体 */
+  font-weight: bold;
+  /* 加粗字体 */
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  gap: 0px;
+  margin-bottom: 8px !important;
+  font-size: 15px !important;
+  display: flex;
+  align-items: center;
+  background: #ffffff !important;
+}
+
+/* 图标样式调整 */
+.el-message__icon {
+  margin-right: 12px !important;
+  font-size: 16px !important;
+}
+
+/* 文字颜色统一为深色 */
+.el-message__content {
+  border: none !important;
+  font-family: 'AlibabaSans',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans',
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji';
+  /* font-family: 'Microsoft YaHei', '微软雅黑', sans-serif !important; 使用微软黑体 */
+  font-weight: bold;
+  /* 加粗字体 */
+  color: #000000d9 !important;
+  padding: 0 8px 0 0;
+}
+
+/* 成功 - 绿色图标 */
+.el-message--success .el-message__icon {
+  color: #52c41a !important;
+}
+
+/* 警告 - 黄色 */
+.el-message--warning .el-message__icon {
+  color: #faad14 !important;
+}
+
+/* 错误 - 红色 */
+.el-message--error .el-message__icon {
+  color: #f5222d !important;
+}
+
+/* 信息 - 蓝色 */
+.el-message--info .el-message__icon {
+  color: #1890ff !important;
+}
+
+/* 背景色（可选：AntD 是白色） */
+.el-message {
+  background-color: #fff !important;
+}
+
+/* 动画：AntD 风格的平滑出现/消失 */
+.el-message {
+  animation: antd-message-fade-in 0.3s ease-out;
+}
+
+@keyframes antd-message-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-100%) translateX(-50%) scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%) scale(1);
+  }
+}
+
+/* antd风格确认气泡框*/
+/* 覆盖 el-popconfirm 样式，模仿 Ant Design Popconfirm */
+.antd-popconfirm {
+  padding: 12px 16px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+    0 6px 16px 0 rgba(0, 0, 0, 0.08),
+    0 9px 28px 8px rgba(0, 0, 0, 0.05) !important;
+  font-family: 'AlibabaSans',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans',
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji' !important;
+  font-weight: 500;
+  color: #000000d9;
+  line-height: 1.5;
+  width: 220px !important;
+  max-width: 220px !important;
+  overflow: hidden;
+}
+
+/* 标题文本 */
+.antd-popconfirm .el-popconfirm__main {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.antd-popconfirm .el-popconfirm__icon {
+  font-size: 16px !important;
+  margin-top: 1px;
+}
+
+.antd-popconfirm .el-popconfirm__title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000d9;
+  margin: 0;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* 按钮区域 */
+.antd-popconfirm .el-popconfirm__action {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+/* 取消按钮：白底 + 灰边 */
+.antd-popconfirm .el-button--default {
+  background-color: #fff !important;
+  color: #000000d9 !important;
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 4px !important;
+  font-weight: 500 !important;
+  padding: 0 12px !important;
+  height: 32px !important;
+  box-shadow: none !important;
+}
+
+.antd-popconfirm .el-button--default:hover {
+  background-color: #f5f5f5 !important;
+  border-color: #8c8c8c !important;
+}
+
+/* 确定按钮：蓝色主按钮 */
+.antd-popconfirm .el-button--primary {
+  background-color: #1890ff !important;
+  border-color: #1890ff !important;
+  color: #fff !important;
+  border-radius: 4px !important;
+  font-weight: 500 !important;
+  padding: 0 12px !important;
+  height: 32px !important;
+  box-shadow: none !important;
+}
+
+.antd-popconfirm .el-button--primary:hover {
+  background-color: #40a9ff !important;
+  border-color: #40a9ff !important;
+}
+
+/* 箭头样式（可选） */
+.antd-popconfirm .el-popper__arrow {
+  display: none !important;
+  /* AntD 风格通常隐藏箭头或更小 */
+}
+
+/* 全局滚动条样式 - 简约版 */
+:root {
+  --scrollbar-width: 6px;
+  --scrollbar-thumb-color: #c1c1c1;
+  --scrollbar-thumb-hover-color: #a8a8a8;
+  --scrollbar-track-color: #f1f1f1;
+}
+
+/* Webkit浏览器 (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+  border-radius: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color);
+  border-radius: var(--scrollbar-width);
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-color);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+}
+
+/* 可选：特定元素的更细滚动条 */
+.slim-scrollbar {
+  --scrollbar-width: 4px;
+  --scrollbar-thumb-color: #d3d3d3;
+}
+
+/* 可选：暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --scrollbar-thumb-color: #555;
+    --scrollbar-thumb-hover-color: #777;
+    --scrollbar-track-color: #2d2d2d;
+  }
+}
+
+
+/* dialog */
+/* 全局样式：确保弹窗整体可控制高度 + 内容滚动 */
+
+/* 外层 wrapper：允许高度继承 */
+.universal-dialog-custom .el-dialog {
+  /* ✅ 关键1：取消 Element Plus 的 max-height 限制 */
+  max-height: none !important;
+  /* ✅ 关键2：允许我们设置的高度生效 */
+  height: var(--dialog-height) !important;
+  /* ✅ 使用 flex 布局 */
+  display: flex !important;
+  flex-direction: column !important;
+  /* ✅ 位置调整 */
+  margin: 30px auto !important;
+  overflow: hidden !important; /* 防止自身滚动条 */
+}
+
+/* ✅ 关键3：body 区域占满剩余空间并可滚动 */
+.universal-dialog-custom .el-dialog__body {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  padding: 20px;
+  /* 可选：美化滚动条 */
+  scrollbar-width: thin;
+}
+
+/* ✅ 关键4：footer 固定在底部 */
+.universal-dialog-custom .el-dialog__footer {
+  flex-shrink: 0 !important;
+  border-top: 1px solid #f0f0f0;
+  background-color: #fafafa;
+  padding: 10px 20px;
+}
+
+/* ✅ 可选：隐藏页面滚动条抖动 */
+.universal-dialog-custom .el-overlay {
+  overflow: hidden;
+}
